@@ -123,6 +123,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="getCorner.c" />
     <ClCompile Include="rectanglefunction.c" />
   </ItemGroup>
   <ItemGroup>

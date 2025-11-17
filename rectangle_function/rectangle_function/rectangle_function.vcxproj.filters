@@ -18,6 +18,9 @@
     <ClCompile Include="rectanglefunction.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="getCorner.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="rectangle.h">
