@@ -33,6 +33,11 @@ int main() {
         5.0, 5.0, 3.0,
 		"Isosceles");
 
+	//TEST 3: Scalene triangle
+    testClassifyTriangle("Test 3: Scalene (3,4,5)",
+		3.0, 4.0, 5.0,
+		"Scalene");
+
     printf("\nPress Enter to exit...");
     getchar();
     return 0;
