@@ -28,6 +28,11 @@ int main() {
         5.0, 5.0, 5.0,
         "Equilateral");
 
+	// TEST 2: Isosceles triangle
+    testClassifyTriangle("Test 2: Isosceles (5,5,3)",
+        5.0, 5.0, 3.0,
+		"Isosceles");
+
     printf("\nPress Enter to exit...");
     getchar();
     return 0;
