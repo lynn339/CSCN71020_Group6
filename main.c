@@ -51,6 +51,10 @@ int main() {
     testClassifyTriangle("Test 6: Invalid - Triangle Inequality (1,2,10)",
         1.0, 2.0, 10.0, "Not a triangle");
 
+    // TEST 7: Equilateral with floating-point tolerance
+    testClassifyTriangle("Test 7: Equilateral with tolerance (5.00001,5.00002,5.00003)",
+        5.00001, 5.00002, 5.00003, "Equilateral");
+
     printf("\nPress Enter to exit...");
     getchar();
     return 0;

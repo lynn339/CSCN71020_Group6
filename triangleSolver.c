@@ -3,6 +3,14 @@
 
 #include "triangleSolver.h"
 
+#include <math.h>
+#define EPSILON 0.0001  // Tolerance for floating-point comparison
+
+// Helper function: Compare doubles with tolerance
+int areDoublesEqual(double a, double b) {
+    return fabs(a - b) < EPSILON;
+}
+
 char* analyzeTriangle(int side1, int side2, int side3) {
 	char* result = "";
 	if (side1 <= 0 || side2 <= 0 || side3 <= 0) {
