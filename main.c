@@ -1,64 +1,34 @@
 #include <stdio.h>
 #include <stdbool.h>
-
+#include <string.h>
 #include "main.h"
 #include "triangleSolver.h"
 
-int side = 0;
+// Test helper function
+void testClassifyTriangle(const char* testName, double s1, double s2, double s3, const char* expected) {
+    char* result = classifyTriangle(s1, s2, s3);
+
+    if (strcmp(result, expected) == 0) {
+        printf("PASS: % s\n", testName);
+        printf("  Input: (%.2f, %.2f, %.2f)\n", s1, s2, s3);
+        printf("  Expected: %s | Got: %s\n\n", expected, result);
+    }
+    else {
+        printf("FAIL: %s\n", testName);
+        printf("  Input: (%.2f, %.2f, %.2f)\n", s1, s2, s3);
+        printf("  Expected: %s | Got: %s\n\n", expected, result);
+    }
+}
 
 int main() {
-	bool continueProgram = true;
-	while (continueProgram) {
-		printWelcome();
+    printf("===== Triangle Classification Tests =====\n\n");
 
-		int shapeChoice = printShapeMenu();
+    // TEST 1: Equilateral triangle
+    testClassifyTriangle("Test 1: Equilateral (5,5,5)",
+        5.0, 5.0, 5.0,
+        "Equilateral");
 
-		switch (shapeChoice)
-		{
-		case 1:
-			printf_s("Triangle selected.\n");
-			int triangleSides[3] = { 0, 0, 0 };
-			int* triangleSidesPtr = getTriangleSides(triangleSides);
-			//printf_s("! %d\n", triangleSidesPtr[0]);
-			char* result = analyzeTriangle(triangleSidesPtr[0], triangleSidesPtr[1], triangleSidesPtr[2]);
-			printf_s("%s\n", result);
-			break;
-		case 0:
-			continueProgram = false;
-			break;
-		default:
-			printf_s("Invalid value entered.\n");
-			break;
-		}
-	}
-	return 0;
-}
-
-void printWelcome() {
-	printf_s("\n");
-	printf_s(" **********************\n");
-	printf_s("**     Welcome to     **\n");
-	printf_s("**   Polygon Checker  **\n");
-	printf_s(" **********************\n");
-}
-
-int printShapeMenu() {
-	printf_s("1. Triangle\n");
-	printf_s("0. Exit\n");
-
-	int shapeChoice;
-
-	printf_s("Enter number: ");
-	scanf_s("%1o", &shapeChoice);
-
-	return shapeChoice;
-}
-
-int* getTriangleSides(int* triangleSides) {
-	printf_s("Enter the three sides of the triangle: ");
-	for (int i = 0; i < 3; i++)
-	{
-		scanf_s("%d", &triangleSides[i]);
-	}
-	return triangleSides;
+    printf("\nPress Enter to exit...");
+    getchar();
+    return 0;
 }
