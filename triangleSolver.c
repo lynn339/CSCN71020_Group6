@@ -24,8 +24,16 @@ char* analyzeTriangle(int side1, int side2, int side3) {
 }
 // Implement classifyTriangle 
 char* classifyTriangle(double side1, double side2, double side3) {
-	// Validation: sides must be positive
+    // Validation 1: sides must be positive
     if (side1 <= 0 || side2 <= 0 || side3 <= 0) {
+        return "Not a triangle";
+    }
+
+    // Validation 2: Triangle Inequality Theorem
+    // Sum of any 2 sides must be greater than the 3rd side
+    if (side1 + side2 <= side3 ||
+        side2 + side3 <= side1 ||
+        side1 + side3 <= side2) {
         return "Not a triangle";
     }
 

@@ -47,6 +47,10 @@ int main() {
     testClassifyTriangle("Test 5: Invalid - Negative Side (-3,4,5)",
         -3.0, 4.0, 5.0, "Not a triangle"); 
 
+    // TEST 6: Invalid - triangle inequality violation
+    testClassifyTriangle("Test 6: Invalid - Triangle Inequality (1,2,10)",
+        1.0, 2.0, 10.0, "Not a triangle");
+
     printf("\nPress Enter to exit...");
     getchar();
     return 0;
