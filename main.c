@@ -43,6 +43,10 @@ int main() {
         0.0, 5.0, 5.0,
         "Not a triangle");
 
+    // TEST 5: Invalid - negative side
+    testClassifyTriangle("Test 5: Invalid - Negative Side (-3,4,5)",
+        -3.0, 4.0, 5.0, "Not a triangle"); 
+
     printf("\nPress Enter to exit...");
     getchar();
     return 0;
