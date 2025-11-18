@@ -55,6 +55,20 @@ int main() {
     testClassifyTriangle("Test 7: Equilateral with tolerance (5.00001,5.00002,5.00003)",
         5.00001, 5.00002, 5.00003, "Equilateral");
 
+    // TEST 8: Isosceles different position
+    testClassifyTriangle("Test 8: Isosceles (3,5,5)",
+        3.0, 5.0, 5.0, "Isosceles");
+
+    // TEST 9: Scalene with floats
+    testClassifyTriangle("Test 9: Scalene (2.5,3.7,4.9)",
+        2.5, 3.7, 4.9, "Scalene");
+
+    // TEST 10: Very small values
+    testClassifyTriangle("Test 10: Scalene tiny (0.001,0.002,0.0025)",
+        0.001, 0.002, 0.0025, "Scalene");
+
+    printf("\nTotal: 10 tests\n");
+
     printf("\nPress Enter to exit...");
     getchar();
     return 0;
