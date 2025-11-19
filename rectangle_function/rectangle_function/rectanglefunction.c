@@ -13,20 +13,3 @@ void getPoints(int *x, int *y)
     }
 }
 
-int main()
-{
-    int x[4], y[4];
-    int i;
-    for (i = 0; i < 4; i++)
-    {
-        
-        getPoints(&x[i], &y[i]);
-        
-    }
-    for (i = 0; i < 4; i++)
-    {
-        printf("The point %d is %d %d\n", i + 1, x[i], y[i]);
-    }
-    return 0;
-    
-}
