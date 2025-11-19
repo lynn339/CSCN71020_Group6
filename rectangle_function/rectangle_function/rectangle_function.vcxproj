@@ -40,7 +40,7 @@
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
-    <ConfigurationType>Application</ConfigurationType>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v143</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
@@ -124,13 +124,9 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="getCorner.c" />
-    <ClCompile Include="rectanglefunction.c" />
-    <ClCompile Include="rectanglemethod1.c" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="corner.h" />
-    <ClInclude Include="rectangle.h" />
-    <ClInclude Include="resource.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="rectangle_function.rc" />

@@ -1,8 +1,19 @@
 #include<stdio.h>
 #include<math.h>
 #include<stdlib.h>
-#include"rectangle.h"
 #include "corner.h"
+
+void getPoints(int* x, int* y)
+{
+	int i = 0;
+	printf("Enter point %d (x, y) : ", i + 1);
+	while (scanf_s("%d , %d", x, y) != 2)
+	{
+		printf("Invalid value, please enter a point (x, y): ");
+		while (getchar() != '\n');
+	}
+}
+
 // オà(y程 x程) à(y程 x程) オà(y程 x程) à(y程 x程)
 void getCorner(int x[4], int y[4])
 {
@@ -38,15 +49,3 @@ void getCorner(int x[4], int y[4])
 }
 
 
-int main()
-{
-	int x[4], y[4];
-	int i;
-	for (i = 0; i < 4; i++)
-	{
-		getPoints(&x[i], &y[i]);
-	}
-	getCorner(x, y);
-
-	return 0;
-}
