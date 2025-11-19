@@ -1,64 +1,75 @@
 #include <stdio.h>
 #include <stdbool.h>
-
+#include <string.h>
 #include "main.h"
 #include "triangleSolver.h"
 
-int side = 0;
+// Test helper function
+void testClassifyTriangle(const char* testName, double s1, double s2, double s3, const char* expected) {
+    char* result = classifyTriangle(s1, s2, s3);
+
+    if (strcmp(result, expected) == 0) {
+        printf("PASS: % s\n", testName);
+        printf("  Input: (%.2f, %.2f, %.2f)\n", s1, s2, s3);
+        printf("  Expected: %s | Got: %s\n\n", expected, result);
+    }
+    else {
+        printf("FAIL: %s\n", testName);
+        printf("  Input: (%.2f, %.2f, %.2f)\n", s1, s2, s3);
+        printf("  Expected: %s | Got: %s\n\n", expected, result);
+    }
+}
 
 int main() {
-	bool continueProgram = true;
-	while (continueProgram) {
-		printWelcome();
+    printf("===== Triangle Classification Tests =====\n\n");
 
-		int shapeChoice = printShapeMenu();
+    // TEST 1: Equilateral triangle
+    testClassifyTriangle("Test 1: Equilateral (5,5,5)",
+        5.0, 5.0, 5.0,
+        "Equilateral");
 
-		switch (shapeChoice)
-		{
-		case 1:
-			printf_s("Triangle selected.\n");
-			int triangleSides[3] = { 0, 0, 0 };
-			int* triangleSidesPtr = getTriangleSides(triangleSides);
-			//printf_s("! %d\n", triangleSidesPtr[0]);
-			char* result = analyzeTriangle(triangleSidesPtr[0], triangleSidesPtr[1], triangleSidesPtr[2]);
-			printf_s("%s\n", result);
-			break;
-		case 0:
-			continueProgram = false;
-			break;
-		default:
-			printf_s("Invalid value entered.\n");
-			break;
-		}
-	}
-	return 0;
-}
+	// TEST 2: Isosceles triangle
+    testClassifyTriangle("Test 2: Isosceles (5,5,3)",
+        5.0, 5.0, 3.0,
+		"Isosceles");
 
-void printWelcome() {
-	printf_s("\n");
-	printf_s(" **********************\n");
-	printf_s("**     Welcome to     **\n");
-	printf_s("**   Polygon Checker  **\n");
-	printf_s(" **********************\n");
-}
+	// TEST 3: Scalene triangle
+    testClassifyTriangle("Test 3: Scalene (3,4,5)",
+		3.0, 4.0, 5.0,
+		"Scalene");
 
-int printShapeMenu() {
-	printf_s("1. Triangle\n");
-	printf_s("0. Exit\n");
+	// TEST 4: Invalid triangle with zero side
+    testClassifyTriangle("Test 4: Invalid (0,5,5)",
+        0.0, 5.0, 5.0,
+        "Not a triangle");
 
-	int shapeChoice;
+    // TEST 5: Invalid - negative side
+    testClassifyTriangle("Test 5: Invalid - Negative Side (-3,4,5)",
+        -3.0, 4.0, 5.0, "Not a triangle"); 
 
-	printf_s("Enter number: ");
-	scanf_s("%1o", &shapeChoice);
+    // TEST 6: Invalid - triangle inequality violation
+    testClassifyTriangle("Test 6: Invalid - Triangle Inequality (1,2,10)",
+        1.0, 2.0, 10.0, "Not a triangle");
 
-	return shapeChoice;
-}
+    // TEST 7: Equilateral with floating-point tolerance
+    testClassifyTriangle("Test 7: Equilateral with tolerance (5.00001,5.00002,5.00003)",
+        5.00001, 5.00002, 5.00003, "Equilateral");
 
-int* getTriangleSides(int* triangleSides) {
-	printf_s("Enter the three sides of the triangle: ");
-	for (int i = 0; i < 3; i++)
-	{
-		scanf_s("%d", &triangleSides[i]);
-	}
-	return triangleSides;
+    // TEST 8: Isosceles different position
+    testClassifyTriangle("Test 8: Isosceles (3,5,5)",
+        3.0, 5.0, 5.0, "Isosceles");
+
+    // TEST 9: Scalene with floats
+    testClassifyTriangle("Test 9: Scalene (2.5,3.7,4.9)",
+        2.5, 3.7, 4.9, "Scalene");
+
+    // TEST 10: Very small values
+    testClassifyTriangle("Test 10: Scalene tiny (0.001,0.002,0.0025)",
+        0.001, 0.002, 0.0025, "Scalene");
+
+    printf("\nTotal: 10 tests\n");
+
+    printf("\nPress Enter to exit...");
+    getchar();
+    return 0;
 }
