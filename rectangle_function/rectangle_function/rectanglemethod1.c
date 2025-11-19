@@ -20,7 +20,7 @@ bool isRightAngle(Point a, Point b, Point c) {
     double y2 = c.y - b.y;
 
     double dot = x1 * x2 + y1 * y2;
-    return fabs(dot) < 1e-6; // dot = 0 ¡ú right angle
+    return fabs(dot) < 1e-6; // dot = 0 is right angle
 }
 // check if the four points form a rectangle and calculate perimeter and area
 void checkRectangleMethod1(Point p1, Point p2, Point p3, Point p4) {
@@ -52,4 +52,15 @@ void checkRectangleMethod1(Point p1, Point p2, Point p3, Point p4) {
         printf("This is NOT a rectangle.\n");
         printf("Area: N/A\n");
     }
+}
+
+int main() {
+    Point a = { 0, 0 };
+    Point b = { 4, 0 };
+    Point c = { 4, 3 };
+    Point d = { 0, 3 };
+
+    checkRectangleMethod1(a, b, c, d);
+
+    return 0;
 }
