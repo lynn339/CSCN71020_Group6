@@ -88,5 +88,17 @@ namespace PolygonCheckerTests
 
             Assert::AreEqual("Not a triangle", result);
         }
+
+        // TEST 7: Equilateral - floating point tolerance
+        TEST_METHOD(Test07_Equilateral_Tolerance)
+        {
+            double side1 = 5.00001;
+            double side2 = 5.00002;
+            double side3 = 5.00003;
+
+            char* result = classifyTriangle(side1, side2, side3);
+
+            Assert::AreEqual("Equilateral", result);
+        }
     };
 }
