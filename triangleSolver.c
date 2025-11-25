@@ -4,9 +4,10 @@
 #include "triangleSolver.h"
 
 #include <math.h>
-#define EPSILON 0.0001  // Tolerance for floating-point comparison
 
-// Helper function: Compare doubles with tolerance
+#define EPSILON 0.0001
+
+// Helper function for floating-point comparison
 int areDoublesEqual(double a, double b) {
     return fabs(a - b) < EPSILON;
 }
@@ -38,22 +39,24 @@ char* classifyTriangle(double side1, double side2, double side3) {
     }
 
     // Validation 2: Triangle Inequality Theorem
-    // Sum of any 2 sides must be greater than the 3rd side
     if (side1 + side2 <= side3 ||
         side2 + side3 <= side1 ||
         side1 + side3 <= side2) {
         return "Not a triangle";
     }
 
-    // Check if all 3 sides are equal
-    if (side1 == side2 && side2 == side3) {
+    // Use tolerance-based comparison
+    int side1_eq_side2 = areDoublesEqual(side1, side2);
+    int side2_eq_side3 = areDoublesEqual(side2, side3);
+    int side1_eq_side3 = areDoublesEqual(side1, side3);
+
+    // Classification
+    if (side1_eq_side2 && side2_eq_side3) {
         return "Equilateral";
     }
-    // Check if exactly 2 sides are equal
-    else if (side1 == side2 || side2 == side3 || side1 == side3) {
+    else if (side1_eq_side2 || side2_eq_side3 || side1_eq_side3) {
         return "Isosceles";
     }
-    // All sides different
     else {
         return "Scalene";
     }
