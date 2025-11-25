@@ -100,5 +100,41 @@ namespace PolygonCheckerTests
 
             Assert::AreEqual("Equilateral", result);
         }
+
+        // TEST 8: Isosceles - last two sides equal
+        TEST_METHOD(Test08_Isosceles_LastTwo)
+        {
+            double side1 = 3.0;
+            double side2 = 5.0;
+            double side3 = 5.0;
+
+            char* result = classifyTriangle(side1, side2, side3);
+
+            Assert::AreEqual("Isosceles", result);
+        }
+
+        // TEST 9: Isosceles - first and third equal
+        TEST_METHOD(Test09_Isosceles_FirstThird)
+        {
+            double side1 = 5.0;
+            double side2 = 3.0;
+            double side3 = 5.0;
+
+            char* result = classifyTriangle(side1, side2, side3);
+
+            Assert::AreEqual("Isosceles", result);
+        }
+
+        // TEST 10: Scalene - floating point values
+        TEST_METHOD(Test10_Scalene_FloatingPoint)
+        {
+            double side1 = 2.5;
+            double side2 = 3.7;
+            double side3 = 4.9;
+
+            char* result = classifyTriangle(side1, side2, side3);
+
+            Assert::AreEqual("Scalene", result);
+        }
     };
 }
