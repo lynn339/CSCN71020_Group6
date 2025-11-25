@@ -53,6 +53,18 @@ namespace PolygonCheckerTests
             Assert::AreEqual("Scalene", result);
         }
 
+        // TEST 4: Invalid - zero side
+        TEST_METHOD(Test04_Invalid_ZeroSide)
+        {
+            double side1 = 0.0;
+            double side2 = 5.0;
+            double side3 = 5.0;
+
+            char* result = classifyTriangle(side1, side2, side3);
+
+            Assert::AreEqual("Not a triangle", result);
+        }
+
 
     };
 }
