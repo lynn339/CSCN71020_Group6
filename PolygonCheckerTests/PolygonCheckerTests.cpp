@@ -76,5 +76,17 @@ namespace PolygonCheckerTests
 
             Assert::AreEqual("Not a triangle", result);
         }
+
+        // TEST 6: Invalid - triangle inequality
+        TEST_METHOD(Test06_Invalid_Inequality)
+        {
+            double side1 = 1.0;
+            double side2 = 2.0;
+            double side3 = 10.0;
+
+            char* result = classifyTriangle(side1, side2, side3);
+
+            Assert::AreEqual("Not a triangle", result);
+        }
     };
 }
