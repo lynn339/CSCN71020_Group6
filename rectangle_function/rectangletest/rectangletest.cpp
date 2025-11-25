@@ -13,8 +13,8 @@ namespace rectangletest
     TEST_CLASS(rectangletest)
     {
     public:
-        
-        TEST_METHOD(distancCalculate)
+		// Test for distanceCalculate function
+        TEST_METHOD(distanc_Calculate)
         {
 			// Test case 1: Distance between (0,0) and (3,4) should be 5
             Point p1 = { 0, 0 };
@@ -32,6 +32,17 @@ namespace rectangletest
 
             
         }
+		// Test for perimeter calculation
+        TEST_METHOD(calculateperimeter)
+        {
+            // Test case 1: square test
+            Point point1[4] = { {0,0}, {10,0}, {10, 10}, {0,10} };
+			Assert::AreEqual(40.0, calculate_perimeter(point1), TOLERANCE, L"Error in square perimeter calculation");
+
+
+
+        }
+	
     };
 }
 
