@@ -65,6 +65,16 @@ namespace PolygonCheckerTests
             Assert::AreEqual("Not a triangle", result);
         }
 
+        // TEST 5: Invalid - negative side
+        TEST_METHOD(Test05_Invalid_NegativeSide)
+        {
+            double side1 = -3.0;
+            double side2 = 4.0;
+            double side3 = 5.0;
 
+            char* result = classifyTriangle(side1, side2, side3);
+
+            Assert::AreEqual("Not a triangle", result);
+        }
     };
 }
