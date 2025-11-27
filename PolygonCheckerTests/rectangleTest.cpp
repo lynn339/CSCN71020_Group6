@@ -6,10 +6,11 @@ extern "C" typedef struct Point
     int x;
     int y;
 }Point;
-extern "C" char* classifyTriangle(double side1, double side2, double side3);
 extern "C" void getPoints(Point points[4]);
 extern "C" double distanceCalculate(Point p1, Point p2);
 extern "C" double calculate_perimeter(Point sorted_points[4]);
+extern "C" bool is_rectangle(Point points[4]);
+
 
 
 
