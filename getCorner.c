@@ -72,19 +72,19 @@ void calculate_area(Point points[4])
 
 }
 
-int main()
-{
-	Point points[4];
-	getPoints(points);
-	if (is_rectangle(points)) {
-		printf("The points form a rectangle.\n");
-		calculate_area(points);
-	}
-	else {
-		printf("The points do not form a rectangle.\n");
-	}
-	double perimeter = calculate_perimeter(points);
-	printf("The perimeter is: %.2f\n", perimeter);
-	return 0;
-}
+//int main()
+//{
+//	Point points[4];
+//	getPoints(points);
+//	if (is_rectangle(points)) {
+//		printf("The points form a rectangle.\n");
+//		calculate_area(points);
+//	}
+//	else {
+//		printf("The points do not form a rectangle.\n");
+//	}
+//	double perimeter = calculate_perimeter(points);
+//	printf("The perimeter is: %.2f\n", perimeter);
+//	return 0;
+//}
 
