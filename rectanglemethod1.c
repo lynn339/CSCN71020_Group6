@@ -54,13 +54,13 @@ void checkRectangleMethod1(Point p1, Point p2, Point p3, Point p4) {
     }
 }
 
-int main() {
-    Point a = { 0, 0 };
-    Point b = { 4, 0 };
+/* int main() {
+   Point a = { 0, 0 };
+   Point b = { 4, 0 };
     Point c = { 4, 3 };
     Point d = { 0, 3 };
 
     checkRectangleMethod1(a, b, c, d);
 
     return 0;
-}
+} */
