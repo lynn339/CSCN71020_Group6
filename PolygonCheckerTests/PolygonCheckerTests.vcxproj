@@ -164,10 +164,6 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="PolygonCheckerTests.cpp" />
-    <ClCompile Include="rectanglemehod1tests.cpp">
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
-      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\SSWCH\source\repos\CSCN71020_Group6</AdditionalIncludeDirectories>
-    </ClCompile>
     <ClCompile Include="rectangleTest.cpp" />
   </ItemGroup>
   <ItemGroup>
