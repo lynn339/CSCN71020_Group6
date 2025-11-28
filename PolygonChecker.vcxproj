@@ -141,6 +141,7 @@
   <ItemGroup>
     <ClCompile Include="getCorner.c" />
     <ClCompile Include="main.c" />
+    <ClCompile Include="rectangle1.cpp" />
     <ClCompile Include="rectanglemethod1.c" />
     <ClCompile Include="triangleSolver.c" />
   </ItemGroup>

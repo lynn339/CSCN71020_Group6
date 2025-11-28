@@ -5,7 +5,11 @@ typedef struct {
     double y;
 } Point; 
 double distance(Point a, Point b);
-bool isRightAngle(Point a, Point b, Point c);
-void checkRectangleMethod1(Point p1, Point p2, Point p3, Point p4);
-#endif // !RECTANGLE1_H
-#pragma once
+bool isRightAnglePoint(Point a, Point b, Point c);
+
+// DoublePoint °æ±¾
+double distanceDouble(DoublePoint a, DoublePoint b);
+bool isRightAngleDouble(DoublePoint a, DoublePoint b, DoublePoint c);
+void checkRectangleMethod1(DoublePoint p1, DoublePoint p2, DoublePoint p3, DoublePoint p4);
+
+#endif

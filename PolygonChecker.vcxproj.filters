@@ -27,6 +27,9 @@
     <ClCompile Include="rectanglemethod1.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="rectangle1.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="triangleSolver.h">
