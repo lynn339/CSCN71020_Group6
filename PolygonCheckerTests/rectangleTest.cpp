@@ -57,8 +57,11 @@ namespace rectangletest
         TEST_METHOD(testRectangleandArea)
         {
 
+            // case 3: Invalid rectangle (rhombus)
+			Point rhombus_points[4] = { {0,0}, {10,5}, {20,0}, {10,-5} };
+			Assert::IsFalse(is_rectangle(rhombus_points), L"Error: Should not be a valid rectangle");
         }
-
+       
     };
 }
 

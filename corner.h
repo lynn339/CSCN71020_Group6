@@ -12,4 +12,5 @@ double calculate_perimeter(Point sorted_points[4]);
 bool is_rectangle(Point points[4]);
 void calculate_area(Point points[4]);
 
+
 #endif // !RECTANGLEFUNCTION_H#pragma once
