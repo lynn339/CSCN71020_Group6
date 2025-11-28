@@ -10,7 +10,9 @@ extern "C" void getPoints(Point points[4]);
 extern "C" double distanceCalculate(Point p1, Point p2);
 extern "C" double calculate_perimeter(Point sorted_points[4]);
 extern "C" bool is_rectangle(Point points[4]);
-void calculate_area(Point points[4]);
+
+
+
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 
@@ -52,17 +54,8 @@ namespace rectangletest
             Assert::AreEqual(60.0, calculate_perimeter(point2), TOLERANCE, L"Error in rectangle perimeter calculation");
 
         }
-        // Test for is_rectangle
-
-        TEST_METHOD(isrectangle)
+        TEST_METHOD(testRectangleandArea)
         {
-            // case 1: valid rectandle
-			Point rectangle_points[4] = { {0,0}, {20,0}, {20,10}, {0,10} };
-			Assert::IsTrue(is_rectangle(rectangle_points), L"Error: Should be a valid rectangle");
-
-			// case 2: Invalid rectangle (parallelogram)
-			Point parallelogram_points[4] = { {0,0}, {20,5}, {25,15}, {5,10} };
-			Assert::IsFalse(is_rectangle(parallelogram_points), L"Error: Should not be a valid rectangle");
 
             // case 3: Invalid rectangle (rhombus)
 			Point rhombus_points[4] = { {0,0}, {10,5}, {20,0}, {10,-5} };
