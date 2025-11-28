@@ -58,18 +58,22 @@ bool is_rectangle(Point points[4])
 	Point p2 = points[1];
 	Point p3 = points[2];
 	Point p4 = points[3];
-	//calculate using dot product
-	int dot1 = (p2.x - p1.x) * (p4.x - p1.x) + (p2.y - p1.y) * (p4.y - p1.y);
-	int dot2 = (p1.x - p2.x) * (p3.x - p2.x) + (p1.y - p2.y) * (p3.y - p2.y);
-	int dot3 = (p2.x - p3.x) * (p4.x - p3.x) + (p2.y - p3.y) * (p4.y - p3.y);
-	int dot4 = (p3.x - p4.x) * (p1.x - p4.x) + (p3.y - p4.y) * (p1.y - p4.y);
-	if (dot1 == 0 && dot2 == 0 && dot3 == 0 && dot4 == 0)
-		return true;
-	else
-		return false;
 
-	bool is_right_angle = (dot == 0);
-	return midpoints_equal && is_right_angle;
+	// calculate using dot product
+
+	
+	long long dot1 = dot_product(p1, p2, p4);
+
+	
+	long long dot2 = dot_product(p2, p1, p3);
+
+	long long dot3 = dot_product(p3, p2, p4);
+
+	
+	long long dot4 = dot_product(p4, p3, p1);
+
+	
+	return (dot1 == 0 && dot2 == 0 && dot3 == 0 && dot4 == 0);
 }
 
 void calculate_area(Point points[4])
