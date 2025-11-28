@@ -35,7 +35,6 @@ double calculate_perimeter(Point sorted_points[4])
 {
 	double perimeter = 0.0;
 	int i;
-	int j;
 	for (i = 0; i < 4; i++)
 	{
 		Point current_point = sorted_points[i];
