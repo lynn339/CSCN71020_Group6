@@ -4,6 +4,8 @@
 
 // Import C functions from main project
 extern "C" char* classifyTriangle(double side1, double side2, double side3);
+extern "C" int calculateTriangleAngles(double side1, double side2, double side3,
+    double* angle1, double* angle2, double* angle3);
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 
@@ -134,6 +136,24 @@ namespace PolygonCheckerTests
             char* result = classifyTriangle(side1, side2, side3);
 
             Assert::AreEqual("Scalene", result);
+        }
+
+        // TEST 11: Right Triangle - should have 90 degree angle
+            TEST_METHOD(Test11_RightTriangle_Has90Degree)
+        {
+            // Arrange
+            double side1 = 3.0;
+            double side2 = 4.0;
+            double side3 = 5.0;
+            double angle1, angle2, angle3;
+
+            // Act
+            int result = calculateTriangleAngles(side1, side2, side3,
+                &angle1, &angle2, &angle3);
+
+            // Assert
+            Assert::AreEqual(1, result, L"Should return success");
+            Assert::AreEqual(90.0, angle3, 0.1, L"Angle3 should be 90 degrees");
         }
     };
 }
