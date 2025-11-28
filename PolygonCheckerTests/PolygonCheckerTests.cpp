@@ -263,5 +263,26 @@ namespace PolygonCheckerTests
               // Assert
               Assert::AreEqual(0, result, L"Should return error for NULL pointers");
           }
+
+          // TEST 18: Scalene triangle - all sides different
+          TEST_METHOD(Test18_Scalene_AllSidesDifferent)
+          {
+              // Arrange
+              double side1 = 7.0;
+              double side2 = 8.0;
+              double side3 = 9.0;
+              double angle1, angle2, angle3;
+
+              // Act
+              int result = calculateTriangleAngles(side1, side2, side3,
+                  &angle1, &angle2, &angle3);
+
+              // Assert
+              Assert::AreEqual(1, result, L"Should return success");
+
+              // Verify sum equals 180
+              double sum = angle1 + angle2 + angle3;
+              Assert::AreEqual(180.0, sum, 0.1, L"Sum should be 180 degrees");
+          }
     };
 }
