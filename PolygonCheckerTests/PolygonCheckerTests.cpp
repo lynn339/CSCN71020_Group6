@@ -196,5 +196,22 @@ namespace PolygonCheckerTests
               double sum = angle1 + angle2 + angle3;
               Assert::AreEqual(180.0, sum, 0.1, L"Sum of angles should be 180 degrees");
           }
+
+          // TEST 14: Invalid input - zero side
+          TEST_METHOD(Test14_Invalid_ZeroSide)
+          {
+              // Arrange
+              double side1 = 0.0;
+              double side2 = 5.0;
+              double side3 = 5.0;
+              double angle1, angle2, angle3;
+
+              // Act
+              int result = calculateTriangleAngles(side1, side2, side3,
+                  &angle1, &angle2, &angle3);
+
+              // Assert
+              Assert::AreEqual(0, result, L"Should return error for zero side");
+          }
     };
 }
