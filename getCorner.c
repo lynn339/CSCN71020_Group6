@@ -8,6 +8,9 @@ typedef struct Point
 	int x;
 	int y;
 }Point;
+
+
+
 void getPoints(Point points[4])
 {
 	
@@ -43,6 +46,7 @@ double calculate_perimeter(Point sorted_points[4])
 	}
 	return perimeter;
 }
+
 long long dot_product(Point pA, Point pB, Point pC) // 
 {
 	// store the value as long long
@@ -50,6 +54,8 @@ long long dot_product(Point pA, Point pB, Point pC) //
 	long long ABy = (long long)pB.y - pA.y;
 	long long ACx = (long long)pC.x - pA.x;
 	long long ACy = (long long)pC.y - pA.y;
+
+	return (ABx * ACx + ABy * ACy);
 }
 
 bool is_rectangle(Point points[4])
