@@ -68,7 +68,7 @@ char* classifyTriangle(double side1, double side2, double side3) {
  * Implementation Notes:
  * - Validates NULL pointers to prevent crashes
  * - Validates positive sides
- * - Uses Law of Cosines: cos(A) = (b² + c² - a²) / (2bc)
+ * - Uses Law of Cosines: cos(A) = (b?+ c?- a? / (2bc)
  * - Converts radians to degrees: angle * (180/?)
  */
 int calculateTriangleAngles(double side1, double side2, double side3,
@@ -93,7 +93,7 @@ int calculateTriangleAngles(double side1, double side2, double side3,
     }
 
     // STEP 4: Calculate angles using Law of Cosines
-    // Formula: cos(A) = (b² + c² - a²) / (2bc)
+    // Formula: cos(A) = (b?+ c?- a? / (2bc)
 
     // angle1 is opposite to side1
     double cos_angle1 = (side2 * side2 + side3 * side3 - side1 * side1) / (2 * side2 * side3);
@@ -112,3 +112,4 @@ int calculateTriangleAngles(double side1, double side2, double side3,
 
     return 1;  // Success
 }
+

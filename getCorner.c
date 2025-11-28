@@ -43,7 +43,14 @@ double calculate_perimeter(Point sorted_points[4])
 	}
 	return perimeter;
 }
-
+long long dot_product(Point pA, Point pB, Point pC) // 
+{
+	// store the value as long long
+	long long ABx = (long long)pB.x - pA.x;
+	long long ABy = (long long)pB.y - pA.y;
+	long long ACx = (long long)pC.x - pA.x;
+	long long ACy = (long long)pC.y - pA.y;
+}
 
 bool is_rectangle(Point points[4])
 {
@@ -51,16 +58,22 @@ bool is_rectangle(Point points[4])
 	Point p2 = points[1];
 	Point p3 = points[2];
 	Point p4 = points[3];
-	//calculate using dot product
-	int dot1 = (p2.x - p1.x) * (p4.x - p1.x) + (p2.y - p1.y) * (p4.y - p1.y);
-	int dot2 = (p1.x - p2.x) * (p3.x - p2.x) + (p1.y - p2.y) * (p3.y - p2.y);
-	int dot3 = (p2.x - p3.x) * (p4.x - p3.x) + (p2.y - p3.y) * (p4.y - p3.y);
-	int dot4 = (p3.x - p4.x) * (p1.x - p4.x) + (p3.y - p4.y) * (p1.y - p4.y);
-	if (dot1 == 0 && dot2 == 0 && dot3 == 0 && dot4 == 0)
-		return true;
-	else
-		return false;
 
+	// calculate using dot product
+
+	
+	long long dot1 = dot_product(p1, p2, p4);
+
+	
+	long long dot2 = dot_product(p2, p1, p3);
+
+	long long dot3 = dot_product(p3, p2, p4);
+
+	
+	long long dot4 = dot_product(p4, p3, p1);
+
+	
+	return (dot1 == 0 && dot2 == 0 && dot3 == 0 && dot4 == 0);
 }
 
 void calculate_area(Point points[4])
