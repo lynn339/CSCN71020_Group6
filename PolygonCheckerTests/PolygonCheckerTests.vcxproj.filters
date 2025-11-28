@@ -33,7 +33,7 @@
     <ClCompile Include="..\getCorner.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="rectangle1tests.cpp">
+    <ClCompile Include="Rectanglemethod1.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
