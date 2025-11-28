@@ -9,7 +9,8 @@ extern "C" typedef struct Point
 extern "C" void getPoints(Point points[4]);
 extern "C" double distanceCalculate(Point p1, Point p2);
 extern "C" double calculate_perimeter(Point sorted_points[4]);
-extern "C" bool is_rectangle(Point points[4]);
+void calculate_area(Point points[4]);
+
 
 
 
@@ -54,11 +55,7 @@ namespace rectangletest
             Assert::AreEqual(60.0, calculate_perimeter(point2), TOLERANCE, L"Error in rectangle perimeter calculation");
 
         }
-        TEST_METHOD(testRectangleandArea)
-        {
-
-        }
-
+       
     };
 }
 
