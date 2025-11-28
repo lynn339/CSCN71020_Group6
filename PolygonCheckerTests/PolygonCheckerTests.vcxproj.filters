@@ -30,6 +30,9 @@
     <ClCompile Include="rectangletest11.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="rectanglemethod1testt.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h">

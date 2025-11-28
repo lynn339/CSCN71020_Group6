@@ -1,29 +1,21 @@
+#include "rectangle1.h"
 #include <stdio.h>
 #include <math.h>
-#include <stdbool.h>
 
-
-typedef struct {
-    double x;
-    double y;
-} Point;
-
-// calculate the distance between two points
-double distance(Point a, Point b) {
+double distance(Dot a, Dot b) {
     return sqrt((a.x - b.x) * (a.x - b.x) + (a.y - b.y) * (a.y - b.y));
 }
-// check if angle ABC is a right angle
-bool isRightAngle(Point a, Point b, Point c) {
+
+bool isRightAngle(Dot a, Dot b, Dot c) {
     double x1 = a.x - b.x;
     double y1 = a.y - b.y;
     double x2 = c.x - b.x;
     double y2 = c.y - b.y;
-
     double dot = x1 * x2 + y1 * y2;
-    return fabs(dot) < 1e-6; // dot = 0 is right angle
+    return fabs(dot) < 1e-6;
 }
-// check if the four points form a rectangle and calculate perimeter and area
-void checkRectangleMethod1(Point p1, Point p2, Point p3, Point p4) {
+
+void checkRectangleMethod1(Dot p1, Dot p2, Dot p3, Dot p4) {
     double d12 = distance(p1, p2);
     double d23 = distance(p2, p3);
     double d34 = distance(p3, p4);
@@ -40,7 +32,6 @@ void checkRectangleMethod1(Point p1, Point p2, Point p3, Point p4) {
         fabs(d23 - d41) < 1e-6;
 
     double perimeter = d12 + d23 + d34 + d41;
-
     printf("Perimeter: %.2f\n", perimeter);
 
     if (isRectangle) {
@@ -53,5 +44,3 @@ void checkRectangleMethod1(Point p1, Point p2, Point p3, Point p4) {
         printf("Area: N/A\n");
     }
 }
-
-
