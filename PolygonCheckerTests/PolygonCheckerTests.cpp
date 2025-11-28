@@ -247,5 +247,21 @@ namespace PolygonCheckerTests
               // Assert
               Assert::AreEqual(0, result, L"Should return error for triangle inequality violation");
           }
+
+          // TEST 17: Invalid input - NULL pointer
+          TEST_METHOD(Test17_Invalid_NullPointer)
+          {
+              // Arrange
+              double side1 = 3.0;
+              double side2 = 4.0;
+              double side3 = 5.0;
+
+              // Act
+              int result = calculateTriangleAngles(side1, side2, side3,
+                  NULL, NULL, NULL);
+
+              // Assert
+              Assert::AreEqual(0, result, L"Should return error for NULL pointers");
+          }
     };
 }
