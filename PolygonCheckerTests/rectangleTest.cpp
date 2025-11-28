@@ -97,7 +97,7 @@ namespace rectangletest
             Assert::AreEqual(0LL, result2, L"T2: Slanted Right Angle Test Failed");
 
             // case 2. test for other kinds of angle  ---
-            // 向量 A = (3, 0), 向量 B = (2, 0) => 點積 = 6
+            //  vector A = (3, 0), vector B = (2, 0) => dotproduct = 6
             Point pA3 = { 0, 0 }, pB3 = { 3, 0 }, pC3 = { 2, 0 };
             long long result3 = dot_product(pA3, pB3, pC3);
             Assert::AreEqual(6LL, result3, L"T3: Acute Angle Test Failed");
@@ -114,6 +114,8 @@ namespace rectangletest
             long long result5 = dot_product(pA5, pB5, pC5);
             Assert::AreEqual(expected_overflow, result5, L"T5: Overflow Protection Test Failed");
         }
+		// test for sort_points function
+
         
      
     };
