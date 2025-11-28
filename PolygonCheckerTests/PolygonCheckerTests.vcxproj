@@ -175,7 +175,6 @@
     <ClCompile Include="PolygonCheckerTests.cpp" />
     <ClCompile Include="rectanglemethod1testt.cpp" />
     <ClCompile Include="rectangleTest.cpp" />
-    <ClCompile Include="rectangletest11.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h" />
