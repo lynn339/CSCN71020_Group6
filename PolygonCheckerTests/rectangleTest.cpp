@@ -83,6 +83,37 @@ namespace rectangletest
 
         }
 		// Test for dot_product function
+        TEST_METHOD(dotproduct)
+        {
+            // case 1. check if it is Orthogonal (the result should be 0) ---
+        // vector A = (2, 0), vector B = (0, 3)
+            Point pA1 = { 1, 1 }, pB1 = { 3, 1 }, pC1 = { 1, 4 };
+            long long result1 = dot_product(pA1, pB1, pC1);
+            Assert::AreEqual(0LL, result1, L"T1: Standard Right Angle Test Failed"); // use 0LL to represent long long 0
+
+            // vector A = (2, 1), vector B = (-1, 2) => dotproduct = 0
+            Point pA2 = { 0, 0 }, pB2 = { 2, 1 }, pC2 = { -1, 2 };
+            long long result2 = dot_product(pA2, pB2, pC2);
+            Assert::AreEqual(0LL, result2, L"T2: Slanted Right Angle Test Failed");
+
+            // case 2. test for other kinds of angle  ---
+            // 向量 A = (3, 0), 向量 B = (2, 0) => 點積 = 6
+            Point pA3 = { 0, 0 }, pB3 = { 3, 0 }, pC3 = { 2, 0 };
+            long long result3 = dot_product(pA3, pB3, pC3);
+            Assert::AreEqual(6LL, result3, L"T3: Acute Angle Test Failed");
+
+            // vector A = (-2, 0), vector B = (1, 0) => dotproduct = -2
+            Point pA4 = { 0, 0 }, pB4 = { -2, 0 }, pC4 = { 1, 0 };
+            long long result4 = dot_product(pA4, pB4, pC4);
+            Assert::AreEqual(-2LL, result4, L"T4: Obtuse Angle Test Failed");
+
+            // case 3. avoid leak---
+            // vector A = (60000, 0), vector B = (60000, 0) => dotproduct = 3,600,000,000
+            Point pA5 = { 0, 0 }, pB5 = { 60000, 0 }, pC5 = { 60000, 0 };
+            long long expected_overflow = 3600000000LL;
+            long long result5 = dot_product(pA5, pB5, pC5);
+            Assert::AreEqual(expected_overflow, result5, L"T5: Overflow Protection Test Failed");
+        }
         
      
     };
