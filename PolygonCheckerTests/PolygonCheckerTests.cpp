@@ -230,5 +230,22 @@ namespace PolygonCheckerTests
               // Assert
               Assert::AreEqual(0, result, L"Should return error for negative side");
           }
+
+          // TEST 16: Invalid - triangle inequality violation
+          TEST_METHOD(Test16_Invalid_TriangleInequality)
+          {
+              // Arrange
+              double side1 = 1.0;
+              double side2 = 2.0;
+              double side3 = 10.0;
+              double angle1, angle2, angle3;
+
+              // Act
+              int result = calculateTriangleAngles(side1, side2, side3,
+                  &angle1, &angle2, &angle3);
+
+              // Assert
+              Assert::AreEqual(0, result, L"Should return error for triangle inequality violation");
+          }
     };
 }
