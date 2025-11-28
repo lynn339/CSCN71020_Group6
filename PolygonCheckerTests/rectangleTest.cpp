@@ -10,8 +10,15 @@ extern "C" void getPoints(Point points[4]);
 extern "C" double distanceCalculate(Point p1, Point p2);
 extern "C" double calculate_perimeter(Point sorted_points[4]);
 extern "C" bool is_rectangle(Point points[4]);
-
-
+extern "C" void sort_points(Point unsorted[4], Point sorted[4]);
+extern "C" long long dot_product(Point pA, Point pB, Point pC);
+extern "C" int compare_angle(const void* a, const void* b);
+extern "C" typedef struct AnglePoint
+{
+    Point p;
+	double angle;
+}AnglePoint;
+extern "C" void calculate_area(Point points[4]);
 
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
@@ -75,6 +82,7 @@ namespace rectangletest
 			Assert::IsFalse(is_rectangle(rhombus_points), L"Error: Should not be a valid rectangle");
 
         }
+		// Test for dot_product function
         
      
     };

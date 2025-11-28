@@ -8,8 +8,47 @@ typedef struct Point
 	int x;
 	int y;
 }Point;
+typedef struct anglepoints {
+	Point p;
+	double angle;
+} AnglePoint;
 
+// qsort comparator function to sort points by angle
+int compare_angle(const void* a, const void* b) {
+	double angle_a = ((AnglePoint*)a)->angle;
+	double angle_b = ((AnglePoint*)b)->angle;
+	// Compare angles
+	if (angle_a < angle_b) return -1;
+	if (angle_a > angle_b) return 1;
+	return 0;
+}
 
+void sort_points(Point unsorted[4], Point sorted[4]) {
+	// 1.calculate for C (Centroid)
+	double Cx = (double)(unsorted[0].x + unsorted[1].x + unsorted[2].x + unsorted[3].x) / 4.0;
+	double Cy = (double)(unsorted[0].y + unsorted[1].y + unsorted[2].y + unsorted[3].y) / 4.0;
+
+	// 2. calcuate angle for each point
+	AnglePoint temp_points[4];
+	for (int i = 0; i < 4; i++) {
+		// store the point
+		temp_points[i].p = unsorted[i];
+
+		// calculate angle
+		double dx = unsorted[i].x - Cx;
+		double dy = unsorted[i].y - Cy;
+		// atan2 returns angle in radians between -pi and pi
+		temp_points[i].angle = atan2(dy, dx);
+	}
+
+	// 3. sort points by angle using qsort
+	qsort(temp_points, 4, sizeof(AnglePoint), compare_angle);
+
+	// 4. store sorted points back to sorted array
+	for (int i = 0; i < 4; i++) {
+		sorted[i] = temp_points[i].p;
+	}
+}
 
 void getPoints(Point points[4])
 {
