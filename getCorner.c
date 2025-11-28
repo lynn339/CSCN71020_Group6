@@ -46,11 +46,11 @@ double calculate_perimeter(Point sorted_points[4])
 long long dot_product(Point pA, Point pB, Point pC) // 
 {
 	// store the value as long long
-	long long ABx = (long long)pB.x - pA.x; 
+	long long ABx = (long long)pB.x - pA.x;
 	long long ABy = (long long)pB.y - pA.y;
 	long long ACx = (long long)pC.x - pA.x;
 	long long ACy = (long long)pC.y - pA.y;
-
+}
 
 bool is_rectangle(Point points[4])
 {
