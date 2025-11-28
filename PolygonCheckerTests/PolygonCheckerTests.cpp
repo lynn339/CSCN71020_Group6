@@ -284,5 +284,25 @@ namespace PolygonCheckerTests
               double sum = angle1 + angle2 + angle3;
               Assert::AreEqual(180.0, sum, 0.1, L"Sum should be 180 degrees");
           }
+
+          // TEST 19: Large numeric values
+          TEST_METHOD(Test19_LargeValues_Equilateral)
+          {
+              // Arrange
+              double side1 = 100.0;
+              double side2 = 100.0;
+              double side3 = 100.0;
+              double angle1, angle2, angle3;
+
+              // Act
+              int result = calculateTriangleAngles(side1, side2, side3,
+                  &angle1, &angle2, &angle3);
+
+              // Assert
+              Assert::AreEqual(1, result, L"Should return success");
+              Assert::AreEqual(60.0, angle1, 0.1, L"Angle1 should be 60 degrees");
+              Assert::AreEqual(60.0, angle2, 0.1, L"Angle2 should be 60 degrees");
+              Assert::AreEqual(60.0, angle3, 0.1, L"Angle3 should be 60 degrees");
+          }
     };
 }
