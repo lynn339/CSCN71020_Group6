@@ -53,14 +53,29 @@ namespace rectangletest
             Point point2[4] = { {0,0}, {20,0}, {20, 10}, {0,10} };
             Assert::AreEqual(60.0, calculate_perimeter(point2), TOLERANCE, L"Error in rectangle perimeter calculation");
 
-        }
-        TEST_METHOD(testRectangleandArea)
-        {
-
             // case 3: Invalid rectangle (rhombus)
+            Point rhombus_points[4] = { {0,0}, {10,5}, {20,0}, {10,-5} };
+            Assert::IsFalse(is_rectangle(rhombus_points), L"Error: Should not be a valid rectangle");
+
+        }
+		// Test for is_rectangle function
+        TEST_METHOD(isrectangle)
+        {
+            // Test case 1: Valid rectangle
+            Point rectangle_points[4] = { {0,0}, {10,0}, {10,5}, {0,5} };
+            Assert::IsTrue(is_rectangle(rectangle_points), L"Error: Should be a valid rectangle");
+            // Test case 2: Invalid rectangle (parallelogram)
+            Point parallelogram_points[4] = { {0,0}, {10,0}, {15,5}, {5,5} };
+            Assert::IsFalse(is_rectangle(parallelogram_points), L"Error: Should not be a valid rectangle");
+            // Test case 3: Valid square
+            Point square_points[4] = { {0,0}, {5,0}, {5,5}, {0,5} };
+			Assert::IsTrue(is_rectangle(square_points), L"Error: Should be a valid rectangle");
+            // Test case 4: Invalid rectangle (Rhombus)
 			Point rhombus_points[4] = { {0,0}, {10,5}, {20,0}, {10,-5} };
 			Assert::IsFalse(is_rectangle(rhombus_points), L"Error: Should not be a valid rectangle");
+
         }
+        
        
     };
 }
