@@ -213,5 +213,22 @@ namespace PolygonCheckerTests
               // Assert
               Assert::AreEqual(0, result, L"Should return error for zero side");
           }
+
+          // TEST 15: Invalid input - negative side
+          TEST_METHOD(Test15_Invalid_NegativeSide)
+          {
+              // Arrange
+              double side1 = -3.0;
+              double side2 = 4.0;
+              double side3 = 5.0;
+              double angle1, angle2, angle3;
+
+              // Act
+              int result = calculateTriangleAngles(side1, side2, side3,
+                  &angle1, &angle2, &angle3);
+
+              // Assert
+              Assert::AreEqual(0, result, L"Should return error for negative side");
+          }
     };
 }
