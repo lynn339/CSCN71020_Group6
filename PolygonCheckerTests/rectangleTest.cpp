@@ -156,7 +156,7 @@ namespace rectangletest
             Point unsorted2[4] = {{10, 10}, {10, -10}, {-10, 10},{-10, -10} };
 
            
-            Point expected_sorted2[4] = { {10, -10}, {10, 10}, {-10, 10}, {-10, -10} };
+            Point expected_sorted2[4] = { {-10, -10}, {10, -10}, {10, 10}, {-10, 10}  };
 
             Point actual_sorted2[4];
             sort_points(unsorted2, actual_sorted2);
@@ -167,6 +167,17 @@ namespace rectangletest
                 
                 Assert::AreEqual(expected_sorted2[i].y, actual_sorted2[i].y, L"T2: Y-coordinate mismatch in sequence.");
             }
+			// case 3: collinear points test
+            Point unsorted3[4] = { {15,0}, {0,0}, {5,0}, {10,0} };
+
+            Point expected_sorted3[4] = { {10, 0}, {15, 0} ,{5, 0}, {0, 0} };
+            Point actual_sorted3[4];
+            sort_points(unsorted3, actual_sorted3);
+            for (int i = 0; i < 4; i++) {
+                Assert::AreEqual(expected_sorted3[i].x, actual_sorted3[i].x, L"T3: X coordinate mismatch");
+                Assert::AreEqual(expected_sorted3[i].y, actual_sorted3[i].y, L"T3: Y coordinate mismatch");
+			}
+			// test calculate_area functions
 
 		}
         
