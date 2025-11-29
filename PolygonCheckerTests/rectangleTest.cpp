@@ -178,6 +178,7 @@ namespace rectangletest
                 Assert::AreEqual(expected_sorted3[i].y, actual_sorted3[i].y, L"T3: Y coordinate mismatch");
 			}
 			// test calculate_area functions
+
 		}
         
      
