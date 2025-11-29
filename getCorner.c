@@ -21,12 +21,12 @@ int compare_angle(const void* a, const void* b) {
 		return 0;
 	}
 
-	// 2. 正常比較
+	// 2. normal comparison
 	if (angle_a < angle_b) {
 		return -1;
 	}
 	else {
-		return 1; // 只有當 angle_a > angle_b 時執行
+		return 1; // only execute when angle_a > angle_b
 	}
 }
 

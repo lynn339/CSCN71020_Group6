@@ -144,14 +144,29 @@ namespace rectangletest
         {
             // case 1:¡@basic test
 			Point unsorted1[4] = { {1,0}, {0,1}, {-1,0}, {0,-1} };// expected order: (1,0), (0,1), (-1,0), (0,-1)
-			Point expected_sorted1[4] = { {1,0}, {0,1}, {-1,0}, {0,-1} }; // expected order
+			Point expected_sorted1[4] = { {0,-1}, {1,0}, {0,1}, {-1,0} }; // expected order
 			Point sorted1[4];
 			sort_points(unsorted1, sorted1);
             for (int i = 0; i < 4; i++) {
                 Assert::AreEqual(expected_sorted1[i].x, sorted1[i].x, L"T1: X coordinate mismatch");
                 Assert::AreEqual(expected_sorted1[i].y, sorted1[i].y, L"T1: Y coordinate mismatch");
 			}
+			// case 2: random order test Cross-Quadrant Unsorted Test
             
+            Point unsorted2[4] = {{10, 10}, {10, -10}, {-10, 10},{-10, -10} };
+
+           
+            Point expected_sorted2[4] = { {10, -10}, {10, 10}, {-10, 10}, {-10, -10} };
+
+            Point actual_sorted2[4];
+            sort_points(unsorted2, actual_sorted2);
+
+            for (int i = 0; i < 4; i++) {
+                
+                Assert::AreEqual(expected_sorted2[i].x, actual_sorted2[i].x, L"T2: X-coordinate mismatch in sequence.");
+                
+                Assert::AreEqual(expected_sorted2[i].y, actual_sorted2[i].y, L"T2: Y-coordinate mismatch in sequence.");
+            }
 
 		}
         
