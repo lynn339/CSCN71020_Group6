@@ -114,7 +114,33 @@ namespace rectangletest
             long long result5 = dot_product(pA5, pB5, pC5);
             Assert::AreEqual(expected_overflow, result5, L"T5: Overflow Protection Test Failed");
         }
-		// test for sort_points function
+		// compare angle test
+        TEST_METHOD(compareangle)
+        {
+            AnglePoint pt_a = { {0, 0}, 0.5 };
+            AnglePoint pt_b = { {0, 0}, 1.0 };
+            AnglePoint pt_c = { {0, 0}, 0.5 };
+            AnglePoint pt_d = { {0, 0}, -3.0 };
+            AnglePoint pt_e = { {0, 0}, 3.0 };
+
+            //case 1: pt_a < pt_b (0.5 < 1.0) -> expect to return -1
+            int result1 = compare_angle(&pt_a, &pt_b);
+            Assert::AreEqual(-1, result1, L"T1: Smaller angle failed to return -1");
+
+            // case 2: pt_b > pt_a (1.0 > 0.5) -> expect to return  1
+            int result2 = compare_angle(&pt_b, &pt_a);
+            Assert::AreEqual(1, result2, L"T2: Larger angle failed to return 1");
+
+            // case3: pt_a == pt_c (0.5 == 0.5) -> expect to return 0
+            int result3 = compare_angle(&pt_a, &pt_c);
+            Assert::AreEqual(0, result3, L"T3: Equal angles failed to return 0");
+
+            // case 4:  
+            AnglePoint pt_d = { {0, 0}, -3.0 };
+            AnglePoint pt_e = { {0, 0}, 3.0 };
+            int result4 = compare_angle(&pt_d, &pt_e);
+            Assert::AreEqual(-1, result4, L"T4: Negative angle failed to be treated as smaller");
+        }
 
         
      
