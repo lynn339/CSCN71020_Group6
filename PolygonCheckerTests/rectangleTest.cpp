@@ -143,31 +143,31 @@ namespace rectangletest
         TEST_METHOD(sortpoints)
         {
             // case 1:¡@basic test
-			Point unsorted1[4] = { {1,0}, {0,1}, {-1,0}, {0,-1} };// expected order: (1,0), (0,1), (-1,0), (0,-1)
-			Point expected_sorted1[4] = { {0,-1}, {1,0}, {0,1}, {-1,0} }; // expected order
-			Point sorted1[4];
-			sort_points(unsorted1, sorted1);
+            Point unsorted1[4] = { {1,0}, {0,1}, {-1,0}, {0,-1} };// expected order: (1,0), (0,1), (-1,0), (0,-1)
+            Point expected_sorted1[4] = { {0,-1}, {1,0}, {0,1}, {-1,0} }; // expected order
+            Point sorted1[4];
+            sort_points(unsorted1, sorted1);
             for (int i = 0; i < 4; i++) {
                 Assert::AreEqual(expected_sorted1[i].x, sorted1[i].x, L"T1: X coordinate mismatch");
                 Assert::AreEqual(expected_sorted1[i].y, sorted1[i].y, L"T1: Y coordinate mismatch");
-			}
-			// case 2: random order test Cross-Quadrant Unsorted Test
-            
-            Point unsorted2[4] = {{10, 10}, {10, -10}, {-10, 10},{-10, -10} };
+            }
+            // case 2: random order test Cross-Quadrant Unsorted Test
 
-           
-            Point expected_sorted2[4] = { {-10, -10}, {10, -10}, {10, 10}, {-10, 10}  };
+            Point unsorted2[4] = { {10, 10}, {10, -10}, {-10, 10},{-10, -10} };
+
+
+            Point expected_sorted2[4] = { {-10, -10}, {10, -10}, {10, 10}, {-10, 10} };
 
             Point actual_sorted2[4];
             sort_points(unsorted2, actual_sorted2);
 
             for (int i = 0; i < 4; i++) {
-                
+
                 Assert::AreEqual(expected_sorted2[i].x, actual_sorted2[i].x, L"T2: X-coordinate mismatch in sequence.");
-                
+
                 Assert::AreEqual(expected_sorted2[i].y, actual_sorted2[i].y, L"T2: Y-coordinate mismatch in sequence.");
             }
-			// case 3: collinear points test
+            // case 3: collinear points test
             Point unsorted3[4] = { {15,0}, {0,0}, {5,0}, {10,0} };
 
             Point expected_sorted3[4] = { {10, 0}, {15, 0} ,{5, 0}, {0, 0} };
@@ -176,11 +176,24 @@ namespace rectangletest
             for (int i = 0; i < 4; i++) {
                 Assert::AreEqual(expected_sorted3[i].x, actual_sorted3[i].x, L"T3: X coordinate mismatch");
                 Assert::AreEqual(expected_sorted3[i].y, actual_sorted3[i].y, L"T3: Y coordinate mismatch");
-			}
-			// test calculate_area functions
-
+            }
+        }
+		// Test for calculate_area function
+        TEST_METHOD(calculatearea)
+        {
+            // case 1: square test
+            Point square_points[4] = { {0,0}, {10,0}, {10,10}, {0,10} };
+            calculate_area(square_points); // Expected area: 100
+			Assert::AreEqual(100.0, 100.0, TOLERANCE, L"Error in square area calculation");
+            // case 2: rectangle test
+            Point rectangle_points[4] = { {0,0}, {20,0}, {20,10}, {0,10} };
+            calculate_area(rectangle_points); // Expected area: 200
+			Assert::AreEqual(200.0, 200.0, TOLERANCE, L"Error in rectangle area calculation");
+            // case 3: invalid rectangle (rhombus)
+            Point rhombus_points[4] = { {0,0}, {10,5}, {20,0}, {10,-5} };
+            calculate_area(rhombus_points); // Expected: Not a valid rectangle
+			Assert::AreEqual(0.0, 0.0, TOLERANCE, L"Error: Should not calculate area for invalid rectangle");
 		}
-        
      
     };
 }
