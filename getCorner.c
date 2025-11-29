@@ -2,7 +2,7 @@
 #include<math.h>
 #include<stdlib.h>
 #include<stdbool.h>
-
+#define ANGLE_EPSILON 0.0000001
 typedef struct Point
 {
 	int x;
@@ -17,10 +17,17 @@ typedef struct anglepoints {
 int compare_angle(const void* a, const void* b) {
 	double angle_a = ((AnglePoint*)a)->angle;
 	double angle_b = ((AnglePoint*)b)->angle;
-	// Compare angles
-	if (angle_a < angle_b) return -1;
-	if (angle_a > angle_b) return 1;
-	return 0;
+	if (fabs(angle_a - angle_b) < ANGLE_EPSILON) {
+		return 0;
+	}
+
+	// 2. 正常比較
+	if (angle_a < angle_b) {
+		return -1;
+	}
+	else {
+		return 1; // 只有當 angle_a > angle_b 時執行
+	}
 }
 
 void sort_points(Point unsorted[4], Point sorted[4]) {

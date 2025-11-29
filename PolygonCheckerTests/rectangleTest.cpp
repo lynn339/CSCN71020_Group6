@@ -135,13 +135,25 @@ namespace rectangletest
             int result3 = compare_angle(&pt_a, &pt_c);
             Assert::AreEqual(0, result3, L"T3: Equal angles failed to return 0");
 
-            // case 4:  
-            AnglePoint pt_d = { {0, 0}, -3.0 };
-            AnglePoint pt_e = { {0, 0}, 3.0 };
+            // case 4: 
             int result4 = compare_angle(&pt_d, &pt_e);
             Assert::AreEqual(-1, result4, L"T4: Negative angle failed to be treated as smaller");
         }
+		// Test for sort_points function
+        TEST_METHOD(sortpoints)
+        {
+            // case 1:¡@basic test
+			Point unsorted1[4] = { {1,0}, {0,1}, {-1,0}, {0,-1} };// expected order: (1,0), (0,1), (-1,0), (0,-1)
+			Point expected_sorted1[4] = { {1,0}, {0,1}, {-1,0}, {0,-1} }; // expected order
+			Point sorted1[4];
+			sort_points(unsorted1, sorted1);
+            for (int i = 0; i < 4; i++) {
+                Assert::AreEqual(expected_sorted1[i].x, sorted1[i].x, L"T1: X coordinate mismatch");
+                Assert::AreEqual(expected_sorted1[i].y, sorted1[i].y, L"T1: Y coordinate mismatch");
+			}
+            
 
+		}
         
      
     };
