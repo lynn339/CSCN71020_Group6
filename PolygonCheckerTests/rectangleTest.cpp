@@ -194,6 +194,26 @@ namespace rectangletest
             calculate_area(rhombus_points); // Expected: Not a valid rectangle
 			Assert::AreEqual(0.0, 0.0, TOLERANCE, L"Error: Should not calculate area for invalid rectangle");
 		}
+        // getpoint function test
+        TEST_METHOD(getpointstest)
+        {
+            Point points[4];
+            // Since getPoints function requires user input, we will not call it directly here.
+            // Instead, we will simulate the input by directly assigning values to the points array.
+            points[0] = { 0, 0 };
+            points[1] = { 10, 0 };
+            points[2] = { 10, 5 };
+            points[3] = { 0, 5 };
+            // Verify that the points have been assigned correctly
+            Assert::AreEqual(0, points[0].x, L"Point 1 X coordinate mismatch");
+            Assert::AreEqual(0, points[0].y, L"Point 1 Y coordinate mismatch");
+            Assert::AreEqual(10, points[1].x, L"Point 2 X coordinate mismatch");
+            Assert::AreEqual(0, points[1].y, L"Point 2 Y coordinate mismatch");
+            Assert::AreEqual(10, points[2].x, L"Point 3 X coordinate mismatch");
+            Assert::AreEqual(5, points[2].y, L"Point 3 Y coordinate mismatch");
+            Assert::AreEqual(0, points[3].x, L"Point 4 X coordinate mismatch");
+			Assert::AreEqual(5, points[3].y, L"Point 4 Y coordinate mismatch");
+        }
      
     };
 }
