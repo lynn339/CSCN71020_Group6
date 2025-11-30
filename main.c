@@ -5,6 +5,7 @@
 #include "main.h"
 #include "triangleSolver.h"
 #include "corner.h"
+#include "rectangle1.h"
 
 int side = 0;
 
@@ -25,6 +26,11 @@ int main() {
         case 2:  // RECTANGLE - NEW!
             printf_s("Rectangle selected.\n\n");
             analyzeRectangle();
+            break;
+
+        case 3:  // RECTANGLE - SPARE METHOD
+            printf_s("Rectangle(Spare Method) selected.\n\n");
+            analyzeRectangleSpare();
             break;
 
         case 0:  // EXIT
@@ -52,6 +58,7 @@ void printWelcome() {
 int printShapeMenu() {
     printf_s("1. Triangle\n");
     printf_s("2. Rectangle\n");
+    printf_s("3. Rectangle(Spare Method)\n");
     printf_s("0. Exit\n");
 
     int shapeChoice;
@@ -104,7 +111,7 @@ void analyzeTriangleWithAngles(void) {
             printf_s("\nSum of angles: %.2f degrees\n", sum);
 
             if (sum >= 179.9 && sum <= 180.1) {
-                printf_s("Verification: Sum equals 180 degrees ✓\n");
+                printf_s("Verification: Sum equals 180 degrees ?\n");
             }
         }
     }
@@ -112,6 +119,21 @@ void analyzeTriangleWithAngles(void) {
         printf_s("\nThese sides do not form a valid triangle.\n");
     }
 
+    printf_s("========================\n");
+}
+
+// RECTANGLE SPARE METHOD ANALYSIS
+void analyzeRectangleSpare(void) {
+    Dot p1, p2, p3, p4;
+
+    printf_s("Enter 4 points (x y on each line):\n");
+    printf_s("Point 1: "); scanf_s("%lf %lf", &p1.x, &p1.y);
+    printf_s("Point 2: "); scanf_s("%lf %lf", &p2.x, &p2.y);
+    printf_s("Point 3: "); scanf_s("%lf %lf", &p3.x, &p3.y);
+    printf_s("Point 4: "); scanf_s("%lf %lf", &p4.x, &p4.y);
+
+    printf_s("\n--- ANALYSIS RESULTS (Spare Method) ---\n");
+    checkRectangleMethod1(p1, p2, p3, p4);
     printf_s("========================\n");
 }
 
