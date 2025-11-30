@@ -1,4 +1,5 @@
 #include "rectangle1.h"
+#include "corner.h"
 #include <stdio.h>
 #include <math.h>
 
@@ -42,5 +43,12 @@ void checkRectangleMethod1(Dot p1, Dot p2, Dot p3, Dot p4) {
     else {
         printf("This is NOT a rectangle.\n");
         printf("Area: N/A\n");
+    }
+}
+
+// useless function to solve the linker error.
+void sort_points(Point in[4], Point out[4]) {
+    for (int i = 0; i < 4; i++) {
+        out[i] = in[i];
     }
 }
