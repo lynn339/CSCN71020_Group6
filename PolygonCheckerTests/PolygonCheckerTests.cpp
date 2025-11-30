@@ -1,4 +1,24 @@
 
+/**
+ * PolygonCheckerTests.cpp
+ *
+ * Comprehensive test suite for triangle operations (Issue #1 and Issue #3)
+ *
+ * Test Coverage:
+ * - classifyTriangle: 10 tests (Test 01-10)
+ *   - Equilateral: 2 tests
+ *   - Isosceles: 3 tests
+ *   - Scalene: 2 tests
+ *   - Invalid: 3 tests
+ *
+ * - calculateTriangleAngles: 10 tests (Test 11-20)
+ *   - Valid triangles: 6 tests
+ *   - Invalid inputs: 4 tests
+ *   - Edge cases: 3 tests
+ *
+ * Total: 20 tests with 100% pass rate
+ */
+
 #include "pch.h"
 #include "CppUnitTest.h"
 

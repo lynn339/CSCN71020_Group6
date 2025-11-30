@@ -2,12 +2,61 @@
 #include<math.h>
 #include<stdlib.h>
 #include<stdbool.h>
-
+#define ANGLE_EPSILON 0.0000001
 typedef struct Point
 {
 	int x;
 	int y;
 }Point;
+typedef struct anglepoints {
+	Point p;
+	double angle;
+} AnglePoint;
+
+// qsort comparator function to sort points by angle
+int compare_angle(const void* a, const void* b) {
+	double angle_a = ((AnglePoint*)a)->angle;
+	double angle_b = ((AnglePoint*)b)->angle;
+	if (fabs(angle_a - angle_b) < ANGLE_EPSILON) {
+		return 0;
+	}
+
+	// 2. normal comparison
+	if (angle_a < angle_b) {
+		return -1;
+	}
+	else {
+		return 1; // only execute when angle_a > angle_b
+	}
+}
+
+void sort_points(Point unsorted[4], Point sorted[4]) {
+	// 1.calculate for C (Centroid)
+	double Cx = (double)(unsorted[0].x + unsorted[1].x + unsorted[2].x + unsorted[3].x) / 4.0;
+	double Cy = (double)(unsorted[0].y + unsorted[1].y + unsorted[2].y + unsorted[3].y) / 4.0;
+
+	// 2. calcuate angle for each point
+	AnglePoint temp_points[4];
+	for (int i = 0; i < 4; i++) {
+		// store the point
+		temp_points[i].p = unsorted[i];
+
+		// calculate angle
+		double dx = unsorted[i].x - Cx;
+		double dy = unsorted[i].y - Cy;
+		// atan2 returns angle in radians between -pi and pi
+		temp_points[i].angle = atan2(dy, dx);
+	}
+
+	// 3. sort points by angle using qsort
+	qsort(temp_points, 4, sizeof(AnglePoint), compare_angle);
+
+	// 4. store sorted points back to sorted array
+	for (int i = 0; i < 4; i++) {
+		sorted[i] = temp_points[i].p;
+	}
+}
+
 void getPoints(Point points[4])
 {
 	
@@ -44,6 +93,16 @@ double calculate_perimeter(Point sorted_points[4])
 	return perimeter;
 }
 
+long long dot_product(Point pA, Point pB, Point pC) // 
+{
+	// store the value as long long
+	long long ABx = (long long)pB.x - pA.x;
+	long long ABy = (long long)pB.y - pA.y;
+	long long ACx = (long long)pC.x - pA.x;
+	long long ACy = (long long)pC.y - pA.y;
+
+	return (ABx * ACx + ABy * ACy);
+}
 
 bool is_rectangle(Point points[4])
 {
@@ -51,16 +110,22 @@ bool is_rectangle(Point points[4])
 	Point p2 = points[1];
 	Point p3 = points[2];
 	Point p4 = points[3];
-	//calculate using dot product
-	int dot1 = (p2.x - p1.x) * (p4.x - p1.x) + (p2.y - p1.y) * (p4.y - p1.y);
-	int dot2 = (p1.x - p2.x) * (p3.x - p2.x) + (p1.y - p2.y) * (p3.y - p2.y);
-	int dot3 = (p2.x - p3.x) * (p4.x - p3.x) + (p2.y - p3.y) * (p4.y - p3.y);
-	int dot4 = (p3.x - p4.x) * (p1.x - p4.x) + (p3.y - p4.y) * (p1.y - p4.y);
-	if (dot1 == 0 && dot2 == 0 && dot3 == 0 && dot4 == 0)
-		return true;
-	else
-		return false;
 
+	// calculate using dot product
+
+	
+	long long dot1 = dot_product(p1, p2, p4);
+
+	
+	long long dot2 = dot_product(p2, p1, p3);
+
+	long long dot3 = dot_product(p3, p2, p4);
+
+	
+	long long dot4 = dot_product(p4, p3, p1);
+
+	
+	return (dot1 == 0 && dot2 == 0 && dot3 == 0 && dot4 == 0);
 }
 
 void calculate_area(Point points[4])
