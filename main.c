@@ -23,15 +23,27 @@ int main() {
             analyzeTriangleWithAngles();
             break;
 
-        case 2:  // RECTANGLE - NEW!
+        case 2:  // RECTANGLE
             printf_s("Rectangle selected.\n\n");
-            analyzeRectangle();
+            printf_s("Choose Rectangle Method:\n");
+            printf_s("1. Geometry Method \n");
+            printf_s("2. Sorting Method \n");
+
+            int rectChoice;
+            printf_s("Enter number: ");
+            scanf_s("%d", &rectChoice);
+
+            if (rectChoice == 1) {
+                analyzeRectangleSpare();   
+            }
+            else if (rectChoice == 2) {
+                analyzeRectangle();        
+            }
+            else {
+                printf_s("Invalid value entered.\n");
+            }
             break;
 
-        case 3:  // RECTANGLE - SPARE METHOD
-            printf_s("Rectangle(Spare Method) selected.\n\n");
-            analyzeRectangleSpare();
-            break;
 
         case 0:  // EXIT
             continueProgram = false;
@@ -58,7 +70,6 @@ void printWelcome() {
 int printShapeMenu() {
     printf_s("1. Triangle\n");
     printf_s("2. Rectangle\n");
-    printf_s("3. Rectangle(Spare Method)\n");
     printf_s("0. Exit\n");
 
     int shapeChoice;

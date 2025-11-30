@@ -46,9 +46,4 @@ void checkRectangleMethod1(Dot p1, Dot p2, Dot p3, Dot p4) {
     }
 }
 
-// useless function to solve the linker error.
-void sort_points(Point in[4], Point out[4]) {
-    for (int i = 0; i < 4; i++) {
-        out[i] = in[i];
-    }
-}
+
